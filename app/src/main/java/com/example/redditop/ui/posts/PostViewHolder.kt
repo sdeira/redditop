@@ -12,10 +12,15 @@ import com.example.redditop.model.UiModel
 class PostViewHolder(
     private val binding: PostViewItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(postItem: UiModel.PostItem?, clearItem: (name: String) -> Unit) {
-        postItem?.let {
-            binding.postItem = postItem
-            binding.dismissPost.setOnClickListener { clearItem(postItem.post.name) }
+    fun bind(
+        postItem: UiModel.PostItem?,
+        clearItem: (name: String) -> Unit,
+        selectItem: (name: String) -> Unit
+    ) {
+        postItem?.apply {
+            binding.root.setOnClickListener { selectItem(post.name) }
+            binding.postItem = this
+            binding.dismissPost.setOnClickListener { clearItem(post.name) }
         }
     }
 

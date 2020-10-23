@@ -8,10 +8,11 @@ import javax.inject.Inject
 
 class PostsAdapter @Inject constructor() : PagingDataAdapter<UiModel.PostItem, PostViewHolder>(POST_COMPARATOR) {
     lateinit var clearItem: (name: String) -> Unit
+    lateinit var selectItem: (name: String) -> Unit
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val uiModel = getItem(position)
-        holder.bind(uiModel, clearItem)
+        holder.bind(uiModel, clearItem, selectItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {

@@ -2,6 +2,7 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="postItem"
             type="com.example.redditop.model.UiModel.PostItem" />
@@ -20,6 +21,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_circle"
         android:padding="@dimen/row_item_margin_vertical"
+        android:visibility="@{postItem.post.read ? View.INVISIBLE : View.VISIBLE}"
         android:contentDescription="@string/post_item_row_read"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/post_author"

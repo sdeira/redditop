@@ -45,4 +45,8 @@ class PostsViewModel @ViewModelInject constructor(
     suspend fun clearAllPosts() {
         repository.clearAllPosts()
     }
+
+    suspend fun markPostAsRead(name: String) {
+        repository.markPostAsRead(name)
+    }
 }

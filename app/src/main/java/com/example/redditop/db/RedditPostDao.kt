@@ -20,4 +20,7 @@ interface RedditPostDao {
 
     @Query("SELECT * FROM posts ORDER BY indexInResponse ASC")
     fun posts(): PagingSource<Int, RedditPost>
+
+    @Query("UPDATE posts SET read=:read WHERE name = :postName")
+    suspend fun markAsRead(read: Boolean, postName: String)
 }

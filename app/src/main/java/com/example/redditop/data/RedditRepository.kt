@@ -49,4 +49,13 @@ class RedditRepository @Inject constructor(
             dataBase.postDao().clearPosts()
         }
     }
+
+    /**
+     * Mark post as read in the data base.
+     */
+    suspend fun markPostAsRead(name: String) {
+        dataBase.withTransaction {
+            dataBase.postDao().markAsRead(true, name)
+        }
+    }
 }
