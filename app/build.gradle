@@ -2,6 +2,7 @@ apply plugin:'com.android.application'
 apply plugin:'kotlin-android'
 apply plugin:'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion 30
@@ -47,6 +48,12 @@ dependencies {
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
+    //DI
+    implementation "com.google.dagger:hilt-android:$daggerHilt"
+    kapt "com.google.dagger:hilt-android-compiler:$daggerHilt"
+    kapt "androidx.hilt:hilt-compiler:$viewModelHilt"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$viewModelHilt"
 
     //Testing
     testImplementation "junit:junit:$jUnitVersion"
