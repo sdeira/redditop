@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="postItem"
+            type="com.example.redditop.model.UiModel.PostItem" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="@dimen/row_item_margin_horizontal"
+    android:paddingTop="@dimen/row_item_margin_vertical"
+    tools:ignore="UnusedAttribute">
+
+    <ImageView
+        android:id="@+id/post_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_circle"
+        android:padding="@dimen/row_item_margin_vertical"
+        android:contentDescription="@string/post_item_row_read"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/post_author"
+        app:layout_constraintBottom_toBottomOf="@+id/post_author"/>
+
+    <TextView
+        android:id="@+id/post_author"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Text.Author"
+        android:text="@{postItem.post.author}"
+        app:layout_constraintEnd_toStartOf="@+id/post_since"
+        app:layout_constraintStart_toEndOf="@+id/post_read"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="android-architecture"/>
+
+    <TextView
+        android:id="@+id/post_since"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="24 hours ago"
+        app:layout_constraintBaseline_toBaselineOf="@+id/post_author"/>
+
+    <TextView
+        android:id="@+id/post_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_left_right_margin"
+        style="@style/Text.Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/post_thumb"
+        app:layout_constraintTop_toBottomOf="@+id/post_author"
+        tools:ignore="UnusedAttribute"
+        android:text="@{postItem.post.title}"
+        tools:text="A collection of samples to discuss and showcase different architectural tools and patterns for Android apps."/>
+
+    <TextView
+        android:id="@+id/post_comments"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="2323 comments"
+        android:padding="@dimen/default_left_right_margin"
+        style="@style/Text.Comments"
+        android:text="@{@string/comments(postItem.post.num_comments)}"
+        app:layout_constraintStart_toStartOf="@+id/post_title"
+        app:layout_constraintEnd_toStartOf="@+id/dismiss_post"
+        app:layout_constraintTop_toBottomOf="@+id/post_title"
+        tools:ignore="RtlCompat"/>
+
+    <ImageView
+        android:id="@+id/dismiss_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/post_item_row_delete"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/post_title"
+        android:padding="20dp"/>
+
+    <ImageView
+        android:id="@+id/post_thumb"
+        android:layout_width="@dimen/post_item_thumb_image_size"
+        android:layout_height="@dimen/post_item_thumb_image_size"
+        android:layout_marginTop="@dimen/default_left_right_margin"
+        android:layout_marginBottom="@dimen/default_left_right_margin"
+        android:contentDescription="@string/post_item_row_thumb"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:background="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@+id/post_author" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
