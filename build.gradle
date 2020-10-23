@@ -12,6 +12,12 @@ buildscript {
         //Static Code Analysis
         detektVersion = "1.14.2"
 
+        //Room Data Base
+        roomVersion = "2.3.0-alpha03"
+
+        //Retrofit
+        retrofitVersion = "2.9.0"
+
         //Testing
         jUnitVersion = "4.13"
         extJunitVersion = "1.1.2"
