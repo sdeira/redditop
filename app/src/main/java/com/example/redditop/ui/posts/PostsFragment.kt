@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.redditop.databinding.PostsFragmentBinding
 import com.example.redditop.viewmodel.PostsViewModel
@@ -36,6 +37,7 @@ class PostsFragment : Fragment() {
         binding = PostsFragmentBinding.inflate(inflater, container, false)
         initList()
         initAdapter()
+        initClearAll()
         getPosts()
         return binding.root
     }
@@ -44,6 +46,12 @@ class PostsFragment : Fragment() {
         val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.content.list.addItemDecoration(decoration)
         binding.content.swipe_to_refresh.setOnRefreshListener { adapter.refresh() }
+    }
+
+    private fun initClearAll() {
+        binding.dismissAll.setOnClickListener { viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.clearAllPosts()
+        } }
     }
 
     private fun getPosts() {
@@ -58,7 +66,7 @@ class PostsFragment : Fragment() {
 
     private fun initAdapter() {
         binding.content.list.adapter = adapter.withLoadStateFooter(footer = PostsLoadStateAdapter { adapter.retry() })
-        adapter.clearItem = { name -> lifecycleScope.launch { viewModel.clearPostByName(name) } }
+        adapter.clearItem = { name -> viewLifecycleOwner.lifecycleScope.launch { viewModel.clearPostByName(name) } }
 
         adapter.addLoadStateListener { loadState ->
             binding.content.swipe_to_refresh.isRefreshing = loadState.refresh is LoadState.Loading

@@ -39,4 +39,14 @@ class RedditRepository @Inject constructor(
             dataBase.postDao().clearPost(name)
         }
     }
+
+    /**
+     * Clear all posts from the data base and also the remote key.
+     */
+    suspend fun clearAllPosts() {
+        dataBase.withTransaction {
+            dataBase.remoteKeyDao().delete()
+            dataBase.postDao().clearPosts()
+        }
+    }
 }

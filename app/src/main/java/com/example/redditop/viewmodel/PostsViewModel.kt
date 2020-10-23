@@ -31,7 +31,18 @@ class PostsViewModel @ViewModelInject constructor(
         currentSearchResult = newResult
         return newResult
     }
+
+    /**
+     * Clear a specific post by name.
+     */
     suspend fun clearPostByName(name: String) {
         repository.clearPostByName(name)
+    }
+
+    /**
+     * Clear all the existing posts.
+     */
+    suspend fun clearAllPosts() {
+        repository.clearAllPosts()
     }
 }
