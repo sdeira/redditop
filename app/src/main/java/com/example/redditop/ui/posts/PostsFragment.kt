@@ -43,6 +43,7 @@ class PostsFragment : Fragment() {
     private fun initList() {
         val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.content.list.addItemDecoration(decoration)
+        binding.content.swipe_to_refresh.setOnRefreshListener { adapter.refresh() }
     }
 
     private fun getPosts() {
