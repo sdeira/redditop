@@ -6,6 +6,7 @@
     <string name="post_item_row_thumb">The post item row thumbnail image</string>
     <string name="post_item_row_read">The post item row read image</string>
     <string name="post_item_row_delete">The post item row delete image</string>
+    <string name="post_detail_image">The post detail image</string>
     <string name="comments">%s Comments</string>
 
     //Created at
