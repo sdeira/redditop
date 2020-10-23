@@ -27,6 +27,9 @@ buildscript {
         //Navigation
         navigationVersion = "2.3.1"
 
+        //Paging
+        pagingVersion = "3.0.0-alpha07"
+
         //Testing
         jUnitVersion = "4.13"
         extJunitVersion = "1.1.2"
