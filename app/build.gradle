@@ -29,6 +29,10 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -39,6 +43,8 @@ dependencies {
     implementation "androidx.legacy:legacy-support-v4:$legacySupportVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion"
 
     //Room Data Base
     implementation "androidx.room:room-runtime:$roomVersion"
@@ -54,6 +60,10 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$daggerHilt"
     kapt "androidx.hilt:hilt-compiler:$viewModelHilt"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$viewModelHilt"
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
     //Testing
     testImplementation "junit:junit:$jUnitVersion"
