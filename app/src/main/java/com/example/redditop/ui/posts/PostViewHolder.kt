@@ -12,9 +12,10 @@ import com.example.redditop.model.UiModel
 class PostViewHolder(
     private val binding: PostViewItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(postItem: UiModel.PostItem?) {
+    fun bind(postItem: UiModel.PostItem?, clearItem: (name: String) -> Unit) {
         postItem?.let {
             binding.postItem = postItem
+            binding.dismissPost.setOnClickListener { clearItem(postItem.post.name) }
         }
     }
 

@@ -4,6 +4,7 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import androidx.room.withTransaction
 import com.example.redditop.api.RedditApi
 import com.example.redditop.db.RedditDataBase
 import com.example.redditop.model.RedditPost
@@ -28,5 +29,14 @@ class RedditRepository @Inject constructor(
                 dataBase
             ),
             pagingSourceFactory = pagingSourceFactory).flow
+    }
+
+    /**
+     * Clear the post from the data base of the specific name.
+     */
+    suspend fun clearPostByName(name: String) {
+        dataBase.withTransaction {
+            dataBase.postDao().clearPost(name)
+        }
     }
 }

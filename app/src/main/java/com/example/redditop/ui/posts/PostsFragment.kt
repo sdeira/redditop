@@ -58,6 +58,8 @@ class PostsFragment : Fragment() {
 
     private fun initAdapter() {
         binding.content.list.adapter = adapter.withLoadStateFooter(footer = PostsLoadStateAdapter { adapter.retry() })
+        adapter.clearItem = { name -> lifecycleScope.launch { viewModel.clearPostByName(name) } }
+
         adapter.addLoadStateListener { loadState ->
             binding.content.swipe_to_refresh.isRefreshing = loadState.refresh is LoadState.Loading
             binding.retryButton.isVisible = loadState.refresh is LoadState.Error && adapter.itemCount == 0

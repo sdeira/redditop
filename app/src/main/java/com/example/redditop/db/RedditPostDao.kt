@@ -15,6 +15,9 @@ interface RedditPostDao {
     @Query("DELETE FROM posts")
     suspend fun clearPosts()
 
+    @Query("DELETE FROM posts WHERE name = :postName")
+    suspend fun clearPost(postName: String)
+
     @Query("SELECT * FROM posts ORDER BY indexInResponse ASC")
     fun posts(): PagingSource<Int, RedditPost>
 }

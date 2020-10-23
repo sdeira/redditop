@@ -31,4 +31,7 @@ class PostsViewModel @ViewModelInject constructor(
         currentSearchResult = newResult
         return newResult
     }
+    suspend fun clearPostByName(name: String) {
+        repository.clearPostByName(name)
+    }
 }

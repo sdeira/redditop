@@ -7,10 +7,11 @@ import com.example.redditop.model.UiModel
 import javax.inject.Inject
 
 class PostsAdapter @Inject constructor() : PagingDataAdapter<UiModel.PostItem, PostViewHolder>(POST_COMPARATOR) {
+    lateinit var clearItem: (name: String) -> Unit
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val uiModel = getItem(position)
-        holder.bind(uiModel)
+        holder.bind(uiModel, clearItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
