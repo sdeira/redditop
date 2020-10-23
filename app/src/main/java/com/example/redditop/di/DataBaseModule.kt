@@ -2,7 +2,7 @@ package com.example.redditop.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.redditop.db.PostsDatabase
+import com.example.redditop.db.RedditDataBase
 import com.example.redditop.db.RedditPostDao
 import dagger.Module
 import dagger.Provides
@@ -17,14 +17,14 @@ object DataBaseModule {
 
     @Provides
     @Singleton
-    fun provideDataBase(@ApplicationContext appContext: Context): PostsDatabase {
+    fun provideDataBase(@ApplicationContext appContext: Context): RedditDataBase {
         return Room.databaseBuilder(appContext,
-            PostsDatabase::class.java, "Reddit.db")
+            RedditDataBase::class.java, "Reddit.db")
             .build()
     }
 
     @Provides
-    fun providePostDao(database: PostsDatabase): RedditPostDao {
-        return database.postDao()
+    fun providePostDao(dataBase: RedditDataBase): RedditPostDao {
+        return dataBase.postDao()
     }
 }

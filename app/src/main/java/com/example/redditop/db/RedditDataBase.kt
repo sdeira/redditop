@@ -9,8 +9,7 @@ import com.example.redditop.model.RedditPost
     version = 1,
     exportSchema = false
 )
-abstract class PostsDatabase : RoomDatabase() {
+abstract class RedditDataBase : RoomDatabase() {
 
     abstract fun postDao(): RedditPostDao
-
 }
