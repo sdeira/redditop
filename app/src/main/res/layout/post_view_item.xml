@@ -89,7 +89,8 @@
         android:layout_marginBottom="@dimen/default_left_right_margin"
         android:contentDescription="@string/post_item_row_thumb"
         app:layout_constraintStart_toStartOf="parent"
-        tools:background="@android:color/black"
+        app:loadImageFromUrl="@{postItem.post.thumbnail}"
+        tools:background="@drawable/image_placeholder"
         app:layout_constraintTop_toBottomOf="@+id/post_author" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

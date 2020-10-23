@@ -30,6 +30,9 @@ buildscript {
         //Paging
         pagingVersion = "3.0.0-alpha07"
 
+        //Glide
+        glideVersion = "4.11.0"
+
         //Testing
         jUnitVersion = "4.13"
         extJunitVersion = "1.1.2"
