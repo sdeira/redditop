@@ -15,4 +15,9 @@
     <string name="minutes">%s Minutes ago</string>
     <string name="seconds">%s Seconds ago</string>
 
+    //Image Download
+    <string name="download_image_without_permissions">Image cannot be downloaded without permissions</string>
+    <string name="image_downloaded">"Image downloaded"</string>
+    <string name="image_downloaded_fails">Image cannot be downloaded</string>
+
 </resources>
