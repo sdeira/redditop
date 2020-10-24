@@ -72,7 +72,9 @@
         app:layout_constraintStart_toStartOf="@+id/post_title"
         app:layout_constraintEnd_toStartOf="@+id/dismiss_post"
         app:layout_constraintTop_toBottomOf="@+id/post_title"
-        tools:ignore="RtlCompat"/>
+        tools:ignore="RtlCompat"
+        android:drawablePadding="4dp"
+        app:drawableStartCompat="@drawable/ic_comments" />
 
     <ImageView
         android:id="@+id/dismiss_post"
