@@ -58,4 +58,11 @@ class RedditRepository @Inject constructor(
             dataBase.postDao().markAsRead(true, name)
         }
     }
+
+    /**
+     * Get post by name from de data base.
+     */
+    suspend fun getPost(name: String): RedditPost? {
+        return dataBase.postDao().post(name)
+    }
 }

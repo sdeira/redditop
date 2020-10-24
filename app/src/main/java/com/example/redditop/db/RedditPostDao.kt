@@ -23,4 +23,7 @@ interface RedditPostDao {
 
     @Query("UPDATE posts SET read=:read WHERE name = :postName")
     suspend fun markAsRead(read: Boolean, postName: String)
+
+    @Query("SELECT * FROM posts WHERE name = :postName")
+    suspend fun post(postName: String) : RedditPost?
 }

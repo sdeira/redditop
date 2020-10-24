@@ -8,6 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.example.redditop.data.RedditRepository
+import com.example.redditop.model.RedditPost
 import com.example.redditop.model.UiModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -46,7 +47,17 @@ class PostsViewModel @ViewModelInject constructor(
         repository.clearAllPosts()
     }
 
+    /**
+     * Mark post as read.
+     */
     suspend fun markPostAsRead(name: String) {
         repository.markPostAsRead(name)
+    }
+
+    /**
+     * Get post by name.
+     */
+    suspend fun getPost(name: String) : RedditPost? {
+        return repository.getPost(name)
     }
 }
