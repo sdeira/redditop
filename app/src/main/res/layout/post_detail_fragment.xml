@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/post_detail_image_size"
                     android:contentDescription="@string/post_detail_image"
-                    app:loadImageFromUrl="@{postItem.post.thumbnail}"
+                    app:loadImageFromUrl="@{postItem.post.url.endsWith(`.jpg`) ? postItem.post.url : postItem.post.thumbnail}"
                     android:layout_marginTop="@dimen/default_left_right_margin"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

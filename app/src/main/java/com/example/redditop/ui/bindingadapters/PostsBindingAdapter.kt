@@ -8,13 +8,14 @@ import com.bumptech.glide.Glide
 import com.example.redditop.R
 import java.util.concurrent.TimeUnit
 
+
 @BindingAdapter("loadImageFromUrl")
-fun loadImageFromUrl(view: ImageView, thumbnail: String?) {
-    thumbnail?.let {
-        if (thumbnail.startsWith("http")) {
+fun loadImageFromUrl(view: ImageView, url: String?) {
+    url?.let {
+        if (url.startsWith("http")) {
             view.visibility = View.VISIBLE
-            Glide.with(view.context).load(thumbnail)
-                .centerInside()
+            Glide.with(view.context).load(url)
+                .fitCenter()
                 .placeholder(R.drawable.image_placeholder)
                 .into(view)
         } else {

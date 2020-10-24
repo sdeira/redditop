@@ -68,9 +68,15 @@ class PostDetailFragment : Fragment() {
     private fun initDownloadImage() {
         binding.download.setOnClickListener {
             if (hasPermission()) {
-                binding.postItem?.let {
+                binding.postItem?.let {postItem ->
                     context?.apply {
-                        it.post.thumbnail?.saveImage(this, it.post.name)
+                        postItem.post.url?.let {url ->
+                            if (url.endsWith(".jpg")) {
+                                url.saveImage(this, postItem.post.name)
+                            } else {
+                                postItem.post.thumbnail?.saveImage(this, postItem.post.name)
+                            }
+                        }
                     }
                 }
 
