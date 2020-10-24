@@ -8,11 +8,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadState
-import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.redditop.R
 import com.example.redditop.databinding.PostsFragmentBinding
+import com.example.redditop.ui.postdetail.PostDetailFragment
 import com.example.redditop.viewmodel.PostsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.content_layout.view.*
@@ -24,6 +26,9 @@ import javax.inject.Inject
 @ExperimentalPagingApi
 @AndroidEntryPoint
 class PostsFragment : Fragment() {
+    companion object {
+        private const val POST_NAME_PARAM = "post_name"
+    }
     private var postsJob: Job? = null
     private lateinit var binding: PostsFragmentBinding
     private val viewModel: PostsViewModel by activityViewModels()
@@ -70,6 +75,18 @@ class PostsFragment : Fragment() {
         adapter.selectItem = {
                 name -> viewLifecycleOwner.lifecycleScope.launch {
             viewModel.markPostAsRead(name)
+            if (binding.content.item_detail_container == null) {
+                val action = PostsFragmentDirections.actionPostsFragmentToPostDetailFragment2(postName = name, showBack = true)
+                findNavController().navigate(action)
+            } else {
+                val postDetailFragment = PostDetailFragment()
+                val bundle = Bundle()
+                bundle.putString(POST_NAME_PARAM, name)
+                postDetailFragment.arguments = bundle
+                childFragmentManager.beginTransaction()
+                    .replace(R.id.item_detail_container, postDetailFragment)
+                    .commit()
+            }
         }
         }
 

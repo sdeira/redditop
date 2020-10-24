@@ -6,5 +6,21 @@
     <fragment
         android:id="@+id/postsFragment"
         android:name="com.example.redditop.ui.posts.PostsFragment"
-        android:label="PostsFragment" />
+        android:label="PostsFragment" >
+        <action
+            android:id="@+id/action_postsFragment_to_postDetailFragment2"
+            app:destination="@id/postDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetailFragment"
+        android:name="com.example.redditop.ui.postdetail.PostDetailFragment"
+        android:label="PostDetailFragment" >
+        <argument
+            android:name="post_name"
+            app:argType="string" />
+        <argument
+            android:name="show_back"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
 </navigation>
