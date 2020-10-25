@@ -4,7 +4,7 @@ A simple Reddit client that shows the top 50 entries from Reddit.
 
 | Portrait | Landscape |
 |-|-|
-|<img src="https://github.com/sdeira/redditop/blob/master/screenshots/portrait.png" width="200">|<img src="https://github.com/sdeira/redditop/blob/master/screenshots/landscape.png" width="200">|
+|<img src="https://github.com/sdeira/redditop/blob/main/screenshots/portrait.png" width="200">|<img src="https://github.com/sdeira/redditop/blob/main/screenshots/landscape.png" width="200">|
 
 
 ## Architecture
