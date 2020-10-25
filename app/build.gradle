@@ -49,6 +49,21 @@ android {
             includeAndroidResources = true
         }
     }
+
+    sourceSets {
+        test {
+            java.srcDirs += "$projectDir/src/testShared"
+        }
+
+        androidTest {
+            java.srcDirs += "$projectDir/src/testShared"
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
 }
 
 dependencies {
@@ -108,4 +123,7 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$expressoVersion"
 
+    //Testing
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
+    androidTestImplementation "android.arch.core:core-testing:$coreTestingVersion"
 }
