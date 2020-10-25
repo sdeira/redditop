@@ -39,6 +39,16 @@ android {
         jvmTarget = "1.8"
         freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
     }
+
+    hilt {
+        enableTransformForLocalTests = true
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -62,10 +72,10 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     //DI
-    implementation "com.google.dagger:hilt-android:$daggerHilt"
-    kapt "com.google.dagger:hilt-android-compiler:$daggerHilt"
-    kapt "androidx.hilt:hilt-compiler:$viewModelHilt"
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$viewModelHilt"
+    implementation "com.google.dagger:hilt-android:$daggerHiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
+    kapt "androidx.hilt:hilt-compiler:$viewModelHiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$viewModelHiltVersion"
 
     //Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -76,10 +86,25 @@ dependencies {
 
     // glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
-    annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
 
     //Testing
     testImplementation "junit:junit:$jUnitVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTestVersion"
+    testImplementation "android.arch.core:core-testing:$coreTestingVersion"
+
+    //Di Testing
+    testImplementation "com.google.dagger:hilt-android-testing:$daggerHiltVersion"
+    testImplementation "com.google.dagger:hilt-android-testing:$daggerHiltVersion"
+    kaptTest "com.google.dagger:hilt-android-compiler:$daggerHiltVersion"
+
+    //Mockito
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoVersion"
+
+    //Robolectric
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
+
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$expressoVersion"
 

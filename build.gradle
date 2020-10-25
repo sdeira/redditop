@@ -21,8 +21,8 @@ buildscript {
         retrofitVersion = "2.9.0"
 
         //DI
-        daggerHilt = "2.28.3-alpha"
-        viewModelHilt = "1.0.0-alpha02"
+        daggerHiltVersion = "2.28.3-alpha"
+        viewModelHiltVersion = "1.0.0-alpha02"
 
         //Navigation
         navigationVersion = "2.3.1"
@@ -37,6 +37,10 @@ buildscript {
         jUnitVersion = "4.13"
         extJunitVersion = "1.1.2"
         expressoVersion = "3.3.0"
+        coroutinesTestVersion = "1.3.9"
+        mockitoVersion = "3.3.0"
+        robolectricVersion = "4.4"
+        coreTestingVersion = "1.1.1"
     }
     repositories {
         google()
@@ -45,7 +49,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$gradleVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$daggerHilt"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$daggerHiltVersion"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
