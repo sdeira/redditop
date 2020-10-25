@@ -25,7 +25,7 @@ fun String.saveImage(context: Context, name: String) {
         .load(this)
         .into(object : CustomTarget<Bitmap>() {
             override fun onLoadCleared(placeholder: Drawable?) {
-                //Nothing to do here
+                // Nothing to do here
             }
 
             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
@@ -34,7 +34,7 @@ fun String.saveImage(context: Context, name: String) {
         })
 }
 
-private fun saveImage(context: Context, bitmap: Bitmap, name:String) {
+private fun saveImage(context: Context, bitmap: Bitmap, name: String) {
     try {
         val fos: OutputStream?
         val directoryName = "Redditop"
@@ -58,7 +58,8 @@ private fun saveImage(context: Context, bitmap: Bitmap, name:String) {
         fos?.let {
             val saved = bitmap.compress(Bitmap.CompressFormat.PNG, QUALITY, fos)
             if (saved) {
-                Toast.makeText(context, context.resources.getString(R.string.image_downloaded), Toast.LENGTH_LONG).show()
+                Toast.makeText(context, context.resources.getString(R.string.image_downloaded),
+                    Toast.LENGTH_LONG).show()
             }
             it.flush()
             it.close()
@@ -67,5 +68,4 @@ private fun saveImage(context: Context, bitmap: Bitmap, name:String) {
         Log.i("Fail to save Image", exception.toString())
         Toast.makeText(context, context.resources.getString(R.string.image_downloaded_fails), Toast.LENGTH_LONG).show()
     }
-
 }

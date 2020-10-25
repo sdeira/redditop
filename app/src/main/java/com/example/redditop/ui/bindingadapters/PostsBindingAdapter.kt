@@ -8,7 +8,6 @@ import com.bumptech.glide.Glide
 import com.example.redditop.R
 import java.util.concurrent.TimeUnit
 
-
 @BindingAdapter("loadImageFromUrl")
 fun loadImageFromUrl(view: ImageView, url: String?) {
     url?.let {

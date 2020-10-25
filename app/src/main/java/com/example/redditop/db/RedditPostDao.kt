@@ -25,5 +25,5 @@ interface RedditPostDao {
     suspend fun markAsRead(read: Boolean, postName: String)
 
     @Query("SELECT * FROM posts WHERE name = :postName")
-    suspend fun post(postName: String) : RedditPost?
+    suspend fun post(postName: String): RedditPost?
 }

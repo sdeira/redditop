@@ -76,7 +76,8 @@ class PostsFragment : Fragment() {
                 name -> viewLifecycleOwner.lifecycleScope.launch {
             viewModel.markPostAsRead(name)
             if (binding.content.item_detail_container == null) {
-                val action = PostsFragmentDirections.actionPostsFragmentToPostDetailFragment2(postName = name, showBack = true)
+                val action = PostsFragmentDirections
+                    .actionPostsFragmentToPostDetailFragment2(postName = name, showBack = true)
                 findNavController().navigate(action)
             } else {
                 val postDetailFragment = PostDetailFragment()

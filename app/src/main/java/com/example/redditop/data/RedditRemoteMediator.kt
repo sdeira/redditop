@@ -63,5 +63,4 @@ class RedditRemoteMediator(
             return MediatorResult.Error(exception)
         }
     }
-
 }

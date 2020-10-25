@@ -57,7 +57,7 @@ class PostDetailFragment : Fragment() {
 
     private fun initShowBack() {
         if (args.showBack) {
-            binding.detailToolbar.setNavigationOnClickListener {view ->
+            binding.detailToolbar.setNavigationOnClickListener { view ->
                 view.findNavController().navigateUp()
             }
         } else {
@@ -68,9 +68,9 @@ class PostDetailFragment : Fragment() {
     private fun initDownloadImage() {
         binding.download.setOnClickListener {
             if (hasPermission()) {
-                binding.postItem?.let {postItem ->
+                binding.postItem?.let { postItem ->
                     context?.apply {
-                        postItem.post.url?.let {url ->
+                        postItem.post.url?.let { url ->
                             if (url.endsWith(".jpg")) {
                                 url.saveImage(this, postItem.post.name)
                             } else {
@@ -79,7 +79,6 @@ class PostDetailFragment : Fragment() {
                         }
                     }
                 }
-
             } else {
                 requestPermissions(arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
                     PERMISSION_REQUEST_CODE)

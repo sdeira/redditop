@@ -57,7 +57,7 @@ class PostsViewModel @ViewModelInject constructor(
     /**
      * Get post by name.
      */
-    suspend fun getPost(name: String) : RedditPost? {
+    suspend fun getPost(name: String): RedditPost? {
         return repository.getPost(name)
     }
 }

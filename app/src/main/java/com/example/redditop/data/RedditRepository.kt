@@ -21,7 +21,9 @@ class RedditRepository @Inject constructor(
     }
 
     fun getSearchResultStream(): Flow<PagingData<RedditPost>> {
-        val pagingSourceFactory =  { dataBase.postDao().posts() }
+        val pagingSourceFactory = {
+            dataBase.postDao().posts()
+        }
 
         return Pager(config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
             remoteMediator = RedditRemoteMediator(
