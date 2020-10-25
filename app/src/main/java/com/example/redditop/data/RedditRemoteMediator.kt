@@ -7,6 +7,7 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.example.redditop.api.RedditApi
 import com.example.redditop.db.RedditDataBase
+import com.example.redditop.model.ReadPost
 import com.example.redditop.model.RedditPost
 import com.example.redditop.model.RemoteKey
 import retrofit2.HttpException
@@ -52,7 +53,11 @@ class RedditRemoteMediator(
                     redditDataBase.postDao().clearPosts()
                     redditDataBase.remoteKeyDao().delete()
                 }
-
+                // mark the posts we have already read
+                val postsRead = redditDataBase.readPostDao().postsRead()
+                for (readPost: ReadPost in postsRead) {
+                    data.children.filter { it.data.name == readPost.name }.map { it.data.read = true }
+                }
                 redditDataBase.remoteKeyDao().insert(RemoteKey(REMOTE_KEY_ID, data.after))
                 redditDataBase.postDao().insertAll(items)
             }

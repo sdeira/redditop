@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import androidx.room.withTransaction
 import com.example.redditop.api.RedditApi
 import com.example.redditop.db.RedditDataBase
+import com.example.redditop.model.ReadPost
 import com.example.redditop.model.RedditPost
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -58,6 +59,7 @@ class RedditRepository @Inject constructor(
     suspend fun markPostAsRead(name: String) {
         dataBase.withTransaction {
             dataBase.postDao().markAsRead(true, name)
+            dataBase.readPostDao().insert(ReadPost(name))
         }
     }
 

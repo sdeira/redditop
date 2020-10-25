@@ -26,7 +26,7 @@ data class RedditPost(
     val created: Long,
     val thumbnail: String?,
     val url: String?,
-    val read: Boolean
+    var read: Boolean
 ) {
     var indexInResponse: Int = -1
 }
