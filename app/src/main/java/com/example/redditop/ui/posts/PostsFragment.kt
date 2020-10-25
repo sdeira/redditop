@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -93,7 +92,6 @@ class PostsFragment : Fragment() {
 
         adapter.addLoadStateListener { loadState ->
             binding.content.swipe_to_refresh.isRefreshing = loadState.refresh is LoadState.Loading
-            binding.retryButton.isVisible = loadState.refresh is LoadState.Error && adapter.itemCount == 0
         }
     }
 }
