@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -92,6 +93,16 @@ class PostsFragment : Fragment() {
 
         adapter.addLoadStateListener { loadState ->
             binding.content.swipe_to_refresh.isRefreshing = loadState.refresh is LoadState.Loading
+            context?.apply {
+                val errorState = loadState.refresh as? LoadState.Error
+                errorState?.let {
+                    Toast.makeText(
+                        this,
+                        "\uD83D\uDE28 Wooops ${it.error.localizedMessage}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
         }
     }
 }
