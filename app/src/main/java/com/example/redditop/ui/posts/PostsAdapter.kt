@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import com.example.redditop.model.UiModel
 import javax.inject.Inject
 
+/**
+ * Post list paging adapter.
+ */
 class PostsAdapter @Inject constructor() : PagingDataAdapter<UiModel.PostItem, PostViewHolder>(POST_COMPARATOR) {
     lateinit var clearItem: (name: String) -> Unit
     lateinit var selectItem: (name: String) -> Unit

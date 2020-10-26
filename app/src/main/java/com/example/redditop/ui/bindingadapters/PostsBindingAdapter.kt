@@ -8,6 +8,9 @@ import com.bumptech.glide.Glide
 import com.example.redditop.R
 import java.util.concurrent.TimeUnit
 
+/**
+ * Load a image view with a url
+ */
 @BindingAdapter("loadImageFromUrl")
 fun loadImageFromUrl(view: ImageView, url: String?) {
     url?.let {
@@ -24,6 +27,9 @@ fun loadImageFromUrl(view: ImageView, url: String?) {
     }
 }
 
+/**
+ * Get the time since the post was created.
+ */
 @BindingAdapter("createdTime")
 fun createdTime(view: TextView, created: Long?) {
     created?.let {

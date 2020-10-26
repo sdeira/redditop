@@ -46,6 +46,9 @@ class PostDetailFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Get the post item from the data base by the name get by params.
+     */
     private fun initPostItem() {
         lifecycleScope.launch {
             val post = viewModel.getPost(args.postName)
@@ -55,6 +58,10 @@ class PostDetailFragment : Fragment() {
         }
     }
 
+    /**
+     * Check if we have to show the back icon in the toolbar,
+     * if we are in landscape we shouldn't show it.
+     */
     private fun initShowBack() {
         if (args.showBack) {
             binding.detailToolbar.setNavigationOnClickListener { view ->
@@ -65,6 +72,9 @@ class PostDetailFragment : Fragment() {
         }
     }
 
+    /**
+     * Init the click listener to download the image.
+     */
     private fun initDownloadImage() {
         binding.download.setOnClickListener {
             if (hasPermission()) {
@@ -86,6 +96,10 @@ class PostDetailFragment : Fragment() {
         }
     }
 
+    /**
+     * Check if the user has the read external permission
+     * @return true if yes, false if not.
+     */
     private fun hasPermission(): Boolean {
         context?.let { context ->
             val permission = ContextCompat.checkSelfPermission(context,

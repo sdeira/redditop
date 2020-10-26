@@ -23,6 +23,9 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * Posts list fragment.
+ */
 @ExperimentalPagingApi
 @AndroidEntryPoint
 class PostsFragment : Fragment() {
@@ -47,18 +50,27 @@ class PostsFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Init the list with dividers and swipe to refresh.
+     */
     private fun initList() {
         val decoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.content.list.addItemDecoration(decoration)
         binding.content.swipe_to_refresh.setOnRefreshListener { adapter.refresh() }
     }
 
+    /**
+     * Set the clear all listener.
+     */
     private fun initClearAll() {
         binding.dismissAll.setOnClickListener { viewLifecycleOwner.lifecycleScope.launch {
             viewModel.clearAllPosts()
         } }
     }
 
+    /**
+     * Get the posts from the view model and submit them to the adapter.
+     */
     private fun getPosts() {
         // Make sure we cancel the previous job before creating a new one
         postsJob?.cancel()
@@ -69,6 +81,10 @@ class PostsFragment : Fragment() {
         }
     }
 
+    /**
+     * Init the adapter, show a toast if the request fail with the load state listener and
+     * replace the fragment if we are in landscape mode or navigate to a new one if we are in portrait.
+     */
     private fun initAdapter() {
         binding.content.list.adapter = adapter.withLoadStateFooter(footer = PostsLoadStateAdapter { adapter.retry() })
         adapter.clearItem = { name -> viewLifecycleOwner.lifecycleScope.launch { viewModel.clearPostByName(name) } }

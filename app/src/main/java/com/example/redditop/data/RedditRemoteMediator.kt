@@ -13,6 +13,9 @@ import com.example.redditop.model.RemoteKey
 import retrofit2.HttpException
 import java.io.IOException
 
+/**
+ * The object that handles paging from a layered data source (network  and local database)
+ */
 @ExperimentalPagingApi
 class RedditRemoteMediator(
     private val service: RedditApi,

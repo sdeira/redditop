@@ -13,6 +13,9 @@ import com.example.redditop.model.UiModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+/**
+ * Post View model.
+ */
 @ExperimentalPagingApi
 class PostsViewModel @ViewModelInject constructor(
     private val repository: RedditRepository

@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.redditop.R
 import com.example.redditop.databinding.LoadStateFooterPostViewItemBinding
 
+/**
+ * The View Holder to show the load more view.
+ */
 class PostsLoadStateViewHolder(
     private val binding: LoadStateFooterPostViewItemBinding,
     retry: () -> Unit
@@ -15,6 +18,10 @@ class PostsLoadStateViewHolder(
         binding.retryButton.setOnClickListener { retry.invoke() }
     }
 
+    /**
+     * Bind the view with the information
+     * @param loadState the load state to check if we have to show an error message or not
+     */
     fun bind(loadState: LoadState) {
         binding.loadState = loadState
         if (loadState is LoadState.Error) {

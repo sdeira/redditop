@@ -12,6 +12,9 @@ import com.example.redditop.model.RedditPost
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
+/**
+ * The reddit repository provides clean data access from the api or the data base.
+ */
 @ExperimentalPagingApi
 class RedditRepository @Inject constructor(
     private val redditApi: RedditApi,
@@ -21,6 +24,9 @@ class RedditRepository @Inject constructor(
         private const val NETWORK_PAGE_SIZE = 25
     }
 
+    /**
+     * Get the posts flow paging data to be submitted in the adapter.
+     */
     fun getSearchResultStream(): Flow<PagingData<RedditPost>> {
         val pagingSourceFactory = {
             dataBase.postDao().posts()

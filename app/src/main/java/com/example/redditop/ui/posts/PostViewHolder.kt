@@ -12,6 +12,13 @@ import com.example.redditop.model.UiModel
 class PostViewHolder(
     private val binding: PostViewItemBinding
 ) : RecyclerView.ViewHolder(binding.root) {
+
+    /**
+     * Bind the view with the information
+     * @param postItem the post item information
+     * @param clearItem the listener to execute when the bin is clicked
+     * @param selectItem the listener to execute when the row is clicked
+     */
     fun bind(
         postItem: UiModel.PostItem?,
         clearItem: (name: String) -> Unit,

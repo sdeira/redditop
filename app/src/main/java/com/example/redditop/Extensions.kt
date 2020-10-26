@@ -19,6 +19,11 @@ import java.io.OutputStream
 
 const val QUALITY = 100
 
+/**
+ * An extension to save an image from a string url
+ * @param context the context
+ * @param name the name of the image to save in the gallery
+ */
 fun String.saveImage(context: Context, name: String) {
     Glide.with(context)
         .asBitmap()
@@ -34,6 +39,12 @@ fun String.saveImage(context: Context, name: String) {
         })
 }
 
+/**
+ * Save the image into the gallery
+ * @param context the context
+ * @param bitmap the bitmap to be saved
+ * @param name the name of the image to be saved
+ */
 private fun saveImage(context: Context, bitmap: Bitmap, name: String) {
     try {
         val fos: OutputStream?
